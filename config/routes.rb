@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
 
   resources :links, only: [:index]
+  resources :users, only: [:new, :create] do
+    resources :links, only: [:index]
+  end
 
   namespace :api do
     namespace :v1 do
