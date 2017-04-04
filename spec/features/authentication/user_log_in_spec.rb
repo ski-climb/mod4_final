@@ -55,19 +55,25 @@ describe "User login" do
   end
 
   context "given valid credentials" do
-    it "logs the user in" do
+    let!(:link_1) { create(:link, user: valid_user) }
+    let!(:link_2) { create(:link, user: valid_user) }
+
+    before do
       visit login_path
       fill_in "Email", with: valid_user.email
       fill_in "Password", with: valid_user.password
       click_on "Log in"
+    end
 
+    it "logs the user in" do
       expect(page).to have_current_path(user_links_path(valid_user))
       expect(page).to have_content "Successfully signed in"
       expect(page).to have_content "Sign Out"
     end
 
     it "displays the links for that user" do
-      fail
+      expect(page).to have_content link_1.title
+      expect(page).to have_content link_2.title
     end
   end
 end
