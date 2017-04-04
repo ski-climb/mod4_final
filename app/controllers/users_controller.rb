@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "New account for #{@user.email} successfully created"
       session[:user_id] = @user.id
-      redirect_to user_links_path(@user)
+      redirect_to root_path
     else
       @errors = @user.errors
       render :new

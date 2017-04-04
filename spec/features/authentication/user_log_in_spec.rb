@@ -66,7 +66,7 @@ describe "User login" do
     end
 
     it "logs the user in" do
-      expect(page).to have_current_path(user_links_path(valid_user))
+      expect(page).to have_current_path(root_path)
       expect(page).to have_content "Successfully signed in"
       expect(page).to have_content "Sign Out"
     end

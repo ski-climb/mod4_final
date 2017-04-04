@@ -56,7 +56,7 @@ describe "Creating a new user" do
 
       user = User.find_by(email: "valid@example.com")
       expect(page).to have_content "Sign Out"
-      expect(page).to have_current_path(user_links_path(user))
+      expect(page).to have_current_path(root_path)
     end
   end
 end

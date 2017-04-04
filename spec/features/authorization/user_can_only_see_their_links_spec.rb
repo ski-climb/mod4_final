@@ -22,11 +22,5 @@ describe "User can only view their own links" do
       expect(page).to have_content link_12.title
       expect(page).not_to have_content link_21.title
     end
-
-    it "an authenticated user cannot visit another user's links page" do
-      visit user_links_path(user_2)
-
-      expect(page).to have_content '404'
-    end
   end
 end
