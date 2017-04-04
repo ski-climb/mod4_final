@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Creating a new user" do
-  let(:valid_user) { create(:user) }
+  let(:valid_user) { build(:user) }
   let!(:already_registered_user) { create(:user, email: "taken@example.com") }
 
   context "is unsuccessful" do
@@ -54,8 +54,9 @@ describe "Creating a new user" do
       fill_in "Password confirmation", with: "pass"
       click_on "Create User"
 
+      user = User.find_by(email: "valid@example.com")
       expect(page).to have_content "Sign Out"
-      expect(page).to have_current_path(user_links_path(valid_user))
+      expect(page).to have_current_path(user_links_path(user))
     end
   end
 end
