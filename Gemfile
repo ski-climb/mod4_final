@@ -16,7 +16,7 @@ gem 'awesome_print'
 gem 'sprockets-es6'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # gem 'unicorn'
 
