@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe "User login" do
+  let!(:valid_user) { create(:user) }
+  let(:bad_password) { "not_going_to_work" }
+
   context "user is not registered" do
     it "does not log the visitor in" do
       visit login_path
@@ -15,14 +18,68 @@ describe "User login" do
   end
 
   context "given invalid credentials" do
-    it "does not log the user in" do
+    it "does not log the user in when given a bad password" do
+      visit login_path
+      fill_in "Email", with: valid_user.email
+      fill_in "Password", with: bad_password
+      fill_in "Password confirmation", with: bad_password
+      click_on "Log in"
 
+      expect(page).to have_current_path(login_path)
+      expect(page).to have_content "Email and password combination is not valid"
+      expect(page).not_to have_content "Sign Out"
+    end
+
+    it "does not log the user in when the password and password confirmation don't match" do
+      visit login_path
+      fill_in "Email", with: valid_user.email
+      fill_in "Password", with: bad_password
+      fill_in "Password confirmation", with: bad_password
+      click_on "Log in"
+
+      expect(page).to have_current_path(login_path)
+      expect(page).to have_content "Email and password combination is not valid"
+      expect(page).not_to have_content "Sign Out"
+    end
+  end
+
+  context "given missing credentials" do
+    it "does not log the user in when missing the email" do
+      visit login_path
+      fill_in "Email", with: ""
+      fill_in "Password", with: bad_password
+      fill_in "Password confirmation", with: bad_password
+      click_on "Log in"
+
+      expect(page).to have_current_path(login_path)
+      expect(page).to have_content "Email and password combination is not valid"
+      expect(page).not_to have_content "Sign Out"
+    end
+
+    it "does not log the user in when missing the password" do
+      visit login_path
+      fill_in "Email", with: valid_user.email
+      fill_in "Password", with: ""
+      fill_in "Password confirmation", with: ""
+      click_on "Log in"
+
+      expect(page).to have_current_path(login_path)
+      expect(page).to have_content "Email and password combination is not valid"
+      expect(page).not_to have_content "Sign Out"
     end
   end
 
   context "given valid credentials" do
-    it "logs the user in when valid credentials are provided" do
+    it "logs the user in" do
+      visit login_path
+      fill_in "Email", with: valid_user.email
+      fill_in "Password", with: valid_user.password
+      fill_in "Password confirmation", with: valid_user.password
+      click_on "Log in"
 
+      expect(page).to have_current_path(user_links_path(valid_user))
+      expect(page).to have_content "Successfully signed in"
+      expect(page).to have_content "Sign Out"
     end
   end
 end
