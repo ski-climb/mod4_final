@@ -1,4 +1,5 @@
 class Api::V1::LinksController < ApplicationController
+  before_action :require_login
 
   def update
     @link = Link.find(params[:id])
