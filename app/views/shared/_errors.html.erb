@@ -1,6 +1,6 @@
 <% if @errors %>
   <div class="container alert alert-danger">
-    <h3><%= pluralize(@errors.count, 'error') %> prevented the user to be created</h3>
+    <h3><%= pluralize(@errors.count, 'error') %> prevented the record from being saved</h3>
     <ul>
       <% @errors.full_messages.each do |message| %>
         <li><%= message %></li>

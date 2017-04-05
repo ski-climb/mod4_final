@@ -2,6 +2,8 @@
 
 <h2>Add new link</h2>
 
+<div id="error-messages"></div>
+
 <%= bootstrap_form_for @link do |f| %>
   <%= f.text_field :url, hide_label: true, placeholder: 'URL' %>
   <%= f.text_field :title, hide_label: true, placeholder: 'Title' %>

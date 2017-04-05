@@ -12,11 +12,15 @@ $(document).ready(function() {
       method: "POST",
       data: new_link
     })
-    .done(function(linkPartial) {
+    .success(function(linkPartial) {
       $('#links').prepend(linkPartial);
+      $('#error-messages').html('');
+      $('#link_url').val('');
+      $('#link_title').val('');
     })
-    .fail(function(data) {
-      console.log('fail');
+    .fail(function(errorPartial) {
+      console.log(errorPartial);
+      $('#error-messages').html(errorPartial.responseText);
     })
   })
 })

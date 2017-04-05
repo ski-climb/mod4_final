@@ -11,11 +11,13 @@ class Api::V1::LinksController < ApplicationController
   end
 
   def create
-    @link = current_user.links.new(link_params)
+    @link = Link.new(link_params)
+    @link.user = current_user
     if @link.save
       render partial: 'links/link', locals: { link: @link }, layout: false
     else
-      render json: @link.errors.full_messages, status: 500
+      @errors = @link.errors
+      render partial: 'shared/errors', status: 500
     end
   end
 
