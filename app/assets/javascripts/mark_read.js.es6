@@ -24,6 +24,9 @@ $( document ).ready(function(){
     .fail(function(errorPartial) {
       $('#error-messages').html(errorPartial.responseText);
     })
+    .complete(function(data) {
+      $('#add_link').prop("disabled", false);
+    })
   })
 
 
