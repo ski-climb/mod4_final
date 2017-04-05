@@ -1,15 +1,18 @@
 <%= link_to "Sign Out", logout_path, method: :delete %>
 
-<% @links.each do |link| %>
-  <div class="list-group">
-    <div class="list-group-item">
-      <div class="list-group-item-text">Title: <%= link.title %></div>
-    </div>
-    <div class="list-group-item">
-      <div class="list-group-item-text">URL: <%= link.url %></div>
-    </div>
-    <div class="list-group-item">
-      <div class="list-group-item-text">Read?: <%= link.read %></div>
-    </div>
-  </div>
+<h2>Add new link</h2>
+
+<%= bootstrap_form_for @link do |f| %>
+  <%= f.text_field :url, hide_label: true, placeholder: 'URL' %>
+  <%= f.text_field :title, hide_label: true, placeholder: 'Title' %>
+
+  <%= f.submit "Add Link", id: 'add_link' %>
 <% end %>
+
+<hr />
+
+<div id="links">
+  <% @links.each do |link| %>
+    <%= render partial: 'link', locals: { link: link } %>
+  <% end %>
+</div>
