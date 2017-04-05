@@ -22,6 +22,24 @@ describe Link do
     end
   end
 
+  describe "url validation" do
+    context "given an invalid url" do
+      let(:bad_url) { build(:link, url: 'bad') }
+
+      it "returns false" do
+        expect(bad_url.valid?).to be false
+      end
+    end
+
+    context "given a valid url" do
+      let(:good_url) { build(:link, url: 'http://example.com') }
+
+      it "returns true" do
+        expect(good_url.valid?).to be true
+      end
+    end
+  end
+
   describe ".most_recent" do
     let!(:old_link) { create(:link, created_at: 4.weeks.ago, updated_at: 2.weeks.ago) }
     let!(:new_link) { create(:link, created_at: 5.weeks.ago, updated_at: 1.day.ago) }
