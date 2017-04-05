@@ -3,4 +3,6 @@ class Link < ActiveRecord::Base
   validates :title, presence: true
 
   belongs_to :user
+
+  scope :most_recent, -> { order('updated_at desc') }
 end

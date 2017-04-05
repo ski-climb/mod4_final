@@ -21,4 +21,14 @@ describe Link do
       expect(link.read).to be true
     end
   end
+
+  describe ".most_recent" do
+    let!(:old_link) { create(:link, created_at: 4.weeks.ago, updated_at: 2.weeks.ago) }
+    let!(:new_link) { create(:link, created_at: 5.weeks.ago, updated_at: 1.day.ago) }
+
+    it "returns links most recent first, oldest last according to updated_at" do
+      expect(Link.most_recent.first).to eq new_link
+      expect(Link.most_recent.last).to eq old_link
+    end
+  end
 end
