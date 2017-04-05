@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $('#add_link').on('click', function(event) {
+  $('#new_link').on('submit', function(event) {
     event.preventDefault();
     var new_link = {
       link: {
@@ -19,7 +19,6 @@ $(document).ready(function() {
       $('#link_title').val('');
     })
     .fail(function(errorPartial) {
-      console.log(errorPartial);
       $('#error-messages').html(errorPartial.responseText);
     })
   })
