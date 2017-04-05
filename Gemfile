@@ -15,6 +15,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rails_12factor', group: :production
 gem 'responders'
 gem 'awesome_print'
+gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
