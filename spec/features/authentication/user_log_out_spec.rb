@@ -5,10 +5,7 @@ describe "User logs out" do
 
   context "when a user is signed in" do
     it "they can log out" do
-      visit login_path
-      fill_in "Email", with: user.email
-      fill_in "Password", with: "password"
-      click_on "Log in"
+      log_in_as_user(user)
 
       expect(page).to have_selector(:link_or_button, "Sign Out")
 

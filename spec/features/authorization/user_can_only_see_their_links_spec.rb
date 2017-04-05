@@ -11,10 +11,7 @@ describe "User can only view their own links" do
 
   context "given more than one user exists who has links" do
     before do
-      visit login_path
-      fill_in "Email", with: user_1.email
-      fill_in "Password", with: user_1.password
-      click_on "Log in"
+      log_in_as_user(user_1)
     end
 
     it "an authenticated user can only see their own links" do
