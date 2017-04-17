@@ -1,0 +1,8 @@
+<h2>Update Link</h2>
+
+<%= bootstrap_form_for @link do |f| %>
+  <%= f.text_field :url, hide_label: true, placeholder: 'URL' %>
+  <%= f.text_field :title, hide_label: true, placeholder: 'Title' %>
+
+  <%= f.submit %>
+<% end %>
