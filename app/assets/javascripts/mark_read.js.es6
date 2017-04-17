@@ -7,8 +7,9 @@ function markAsUnread(e) {
   e.preventDefault();
 
   $(this).text("Mark as Read")
-  $(this).removeClass("mark-as-unread")
-  $(this).addClass("mark-as-read")
+  $(this).toggleClass("mark-as-unread")
+  $(this).parents('.link').toggleClass("mark_as_red")
+  $(this).toggleClass("mark-as-read")
 
   var $link = $(this).parents('.link');
   var linkId = $link.data('link-id');
@@ -25,8 +26,9 @@ function markAsRead(e) {
   e.preventDefault();
 
   $(this).text("Mark as Unread")
-  $(this).removeClass("mark-as-read")
-  $(this).addClass("mark-as-unread")
+  $(this).toggleClass("mark-as-read")
+  $(this).parents('.link').toggleClass("mark_as_red")
+  $(this).toggleClass("mark-as-unread")
 
   var $link = $(this).parents('.link');
   var linkId = $link.data('link-id');
