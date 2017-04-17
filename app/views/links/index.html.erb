@@ -8,8 +8,13 @@
   <%= f.text_field :url, hide_label: true, placeholder: 'URL' %>
   <%= f.text_field :title, hide_label: true, placeholder: 'Title' %>
 
-  <%= f.submit "Add Link", id: 'add_link' %>
+  <%= f.submit "Add Link", id: 'add_link', class: 'btn btn-primary' %>
 <% end %>
+
+<hr />
+
+<%= link_to "Unread Links Only", "#", class: "unread_only btn btn-default" %>
+<%= link_to "Read Links Only", "#", class: "read_only btn btn-default" %>
 
 <hr />
 
