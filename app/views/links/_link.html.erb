@@ -6,7 +6,7 @@
     <div class="list-group-item-text">URL: <%= link.url %></div>
   </div>
   <div class="list-group-item">
-    <div class="list-group-item-text read-status">Read?: <%= link.read %></div>
+    <div class="list-group-item-text">Read?: <span class="read-status"><%= link.read %></span></div>
   </div>
   <div class="list-group-item">
     <%= link_to "Edit", edit_link_path(link) %>

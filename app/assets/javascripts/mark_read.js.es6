@@ -1,9 +1,32 @@
 $( document ).ready(function(){
   $("body").on("click", ".mark-as-read", markAsRead)
+  $("body").on("click", ".mark-as-unread", markAsUnread)
 })
+
+function markAsUnread(e) {
+  e.preventDefault();
+
+  $(this).text("Mark as Read")
+  $(this).removeClass("mark-as-unread")
+  $(this).addClass("mark-as-read")
+
+  var $link = $(this).parents('.link');
+  var linkId = $link.data('link-id');
+
+  $.ajax({
+    type: "PATCH",
+    url: "/api/v1/links/" + linkId,
+    data: { read: false },
+  }).then(updateLinkStatus)
+    .fail(displayFailure);
+}
 
 function markAsRead(e) {
   e.preventDefault();
+
+  $(this).text("Mark as Unread")
+  $(this).removeClass("mark-as-read")
+  $(this).addClass("mark-as-unread")
 
   var $link = $(this).parents('.link');
   var linkId = $link.data('link-id');
@@ -23,3 +46,4 @@ function updateLinkStatus(link) {
 function displayFailure(failureData){
   console.log("FAILED attempt to update Link: " + failureData.responseText);
 }
+
