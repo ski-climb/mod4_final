@@ -11,6 +11,6 @@
   <div class="list-group-item">
     <%= link_to "Edit", edit_link_path(link) %>
     |
-    <%= link_to "Mark as Read", "#", class: "mark-as-read" %>
+    <%= render partial: "read_link", locals: { link: link } %>
   </div>
 </div>
