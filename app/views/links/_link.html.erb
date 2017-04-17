@@ -1,4 +1,4 @@
-<div class="list-group">
+<div class="list-group link" data-link-id=<%= link.id %>>
   <div class="list-group-item">
     <div class="list-group-item-text">Title: <%= link.title %></div>
   </div>
@@ -6,9 +6,11 @@
     <div class="list-group-item-text">URL: <%= link.url %></div>
   </div>
   <div class="list-group-item">
-    <div class="list-group-item-text">Read?: <%= link.read %></div>
+    <div class="list-group-item-text read-status">Read?: <%= link.read %></div>
   </div>
   <div class="list-group-item">
     <%= link_to "Edit", edit_link_path(link) %>
+    |
+    <%= link_to "Mark as Read", "#", class: "mark-as-read" %>
   </div>
 </div>
