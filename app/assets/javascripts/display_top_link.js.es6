@@ -1,8 +1,6 @@
 $(document).ready(function() {
-
   showTopLink();
   showHotLinks();
-
 });
 
 function showTopLink() {
@@ -19,7 +17,6 @@ function showTopLink() {
     console.log('no top link');
   })
 }
-
 
 function showHotLinks() {
   $.ajax({
