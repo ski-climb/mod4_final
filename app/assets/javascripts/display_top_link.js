@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 function showTopLink() {
   $.ajax({
-    url: "http://localhost:2000/api/v1/links/top_link",
+    url: "https://hawt-reads.herokuapp.com/api/v1/links/top_link",
     method: "GET"
   })
   .success(function(data) {
@@ -23,7 +23,7 @@ function showTopLink() {
 
 function showHotLinks() {
   $.ajax({
-    url: "http://localhost:2000/api/v1/links/hot_links",
+    url: "https://hawt-reads.herokuapp.com/api/v1/links/hot_links",
     method: "GET"
   })
   .success(function(data) {

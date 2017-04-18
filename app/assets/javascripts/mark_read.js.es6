@@ -48,7 +48,7 @@ function markAsRead(e) {
 
   $.ajax({
     type: "POST",
-    url: "http://localhost:2000/api/v1/links",
+    url: "https://hawt-reads.herokuapp.com/api/v1/links",
     data: urlData
     }).then(() => {
       console.log('link marked as read');
