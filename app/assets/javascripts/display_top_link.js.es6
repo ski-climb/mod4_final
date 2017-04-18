@@ -9,6 +9,7 @@ function showTopLink() {
     method: "GET"
   })
   .success(function(data) {
+    console.log(data);
     $(`[data-url="${data}"]`)
       .prepend("Top Link!")
       .addClass('top_link');
@@ -25,6 +26,7 @@ function showHotLinks() {
   })
   .success(function(data) {
     for(var i=0; i<data.length; i++) {
+      console.log(data)
       $(`[data-url="${data[i]}"]`)
         .prepend("Hot Link!")
         .addClass('hot_link');
