@@ -8,6 +8,17 @@
 
 .mark_as_red {
   color: red;
-  background-color: orange;
   border: solid 2px red;
+}
+
+.top_link {
+  border: solid 3px lightgreen;
+  background-color: green;
+  font-size: 2em;
+}
+
+.hot_link {
+  border: solid 3px steelblue;
+  background-color: dodgerblue;
+  font-size: 1.5em;
 }
