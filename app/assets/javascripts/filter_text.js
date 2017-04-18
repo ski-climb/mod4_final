@@ -1,7 +1,5 @@
 $( document ).ready(function() {
   $('.links_filter input').on('keyup', function() {
-    console.log('asdasdf');
-
     var searchInput = this.value.toLowerCase().split(" ");
     var $links = $('.link');
     if (this.value == "") {
