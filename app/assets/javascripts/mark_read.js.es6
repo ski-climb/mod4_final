@@ -32,6 +32,12 @@ function markAsRead(e) {
 
   var $link = $(this).parents('.link');
   var linkId = $link.data('link-id');
+  var linkUrl = $link.data('url');
+  var urlData = {
+    link: {
+      url: linkUrl
+    }
+  }
 
   $.ajax({
     type: "PATCH",
@@ -39,6 +45,16 @@ function markAsRead(e) {
     data: { read: true },
   }).then(updateLinkStatus)
     .fail(displayFailure);
+
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:2000/api/v1/links",
+    data: urlData
+    }).then(() => {
+      console.log('link marked as read');
+    }).fail(() => {
+      console.log('link not marked as read');
+    })
 }
 
 function updateLinkStatus(link) {
